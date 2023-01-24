@@ -33,9 +33,9 @@ jobs:
         run: |
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
           alias_tags=()
+          alias_tags+=("latest")
+          alias_tags+=("pet")
           # Only perform the follow code when the action is spawned from a Pull Request
-          alias_tags+=latest
-          alias_tags+=pet
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             alias_tags+=("pr-${{ github.event.number }}")
           else
